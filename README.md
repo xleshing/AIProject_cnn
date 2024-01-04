@@ -19,5 +19,4 @@ This command will use the pre-trained model(trained for 1000 games) for gameplay
    ```bash
    python version3_Linear_QNet/main.py
 
-Running this command will initiate the retraining process, overwriting any existing models.but be aware that this action will overwrite any previously trained models.
-
+Running this command will initiate the retraining process, overwriting any existing models.
