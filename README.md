@@ -1,4 +1,4 @@
-# AI Game Playing Framework
+# Snake AI project
 
 ## Overview
 
