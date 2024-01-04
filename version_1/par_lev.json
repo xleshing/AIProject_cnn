@@ -243,14 +243,14 @@
   ],
   "W14":[
     {
-      "col_wall":-10,
+      "col_wall":-5,
       "gamma":0.9,
-      "loop":-10,
-      "scored":10,
-      "num_games":1000,
-      "eps":300,
-      "lr":0.00005,
-      "graph":"optimal_lr__0.0001_eps__200_gamma__0.9"
+      "loop":-5,
+      "scored":5,
+      "num_games":300,
+      "eps":200,
+      "lr":0.0005,
+      "graph":"optimal_lr__0.0005_eps__200_gamma__0.9"
 
     }
   ]

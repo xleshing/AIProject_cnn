@@ -22,7 +22,7 @@ class Agent:
         self.eps = pars.get('eps', EPSILON)
         self.gamma = pars.get('gamma', GAMMA)  # discount rate
         self.eps_range = pars.get('eps_range', EPS_RANGE)
-        print(self.epsilon, self.eps)
+        print(self.epsilon, self.eps_range)
         self.memory = deque(maxlen=MAX_MEMORY)  # popleft()
         self.model = MultiLayer_QNet(len(game.get_state()), pars.get('hidden_size', HIDDEN_SIZES), OUTPUT_SIZE)
         self.trainer = QTrainer(self.model, lr=pars.get('lr', LR), gamma=self.gamma)
@@ -65,7 +65,7 @@ class Agent:
         # and train the step using QTrainer
         states, actions, rewards, next_states, dones = zip(*mini_sample)
         self.trainer.train_step(states, actions, rewards, next_states, dones)
-        if self.n_games % 250 == 0:
+        if self.n_games % 300 == 0:
             self.trainer.plot_losses()  # 顯示loss圖表
             self.trainer.plot_gradient_norms()  # 顯示梯度范数圖表
 

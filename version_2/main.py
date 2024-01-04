@@ -171,8 +171,8 @@ class Game:
                 print('Game', agent.n_games, 'Score', score, 'Record:', record)
 
                 # appends game information to txt file at specified path
-                self.save_to_file(f"D:/Users/Lue/Desktop/{pars.get('graph', 'test')}.txt", agent.n_games, score, record)
-        obj.q()
+                self.save_to_file(f"path/{pars.get('graph', 'test')}.txt", agent.n_games, score, record)
+        cv2.destroyAllWindows()
 
 
 if __name__ == "__main__":

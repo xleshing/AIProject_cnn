@@ -218,13 +218,13 @@ class Snake:
         if self.check_collision():
             terminal = True
             reward = kwargs.get('col_wall', DefaultImediateReward.COLLISION_WALL)
-            reward = reward * (BAD_REWARD * (len(self.snake) - 2))
+            reward = reward * (BAD_REWARD ** (len(self.snake) - 3))
             return reward, terminal, self.score
 
         if self.play_num > kwargs.get('kill_frame', DEFAULT_KILL_FRAME)*(len(self.snake) - 1):
             terminal = True
             reward = kwargs.get('loop', DefaultImediateReward.LOOP)
-            reward = reward * (BAD_REWARD * (len(self.snake) - 2))
+            reward = reward * (BAD_REWARD ** (len(self.snake) - 3))
             return reward, terminal, self.score
 
         self.get_point()
@@ -232,7 +232,7 @@ class Snake:
         if self.point:
             self.score += 1
             reward = kwargs.get('scored', DefaultImediateReward.SCORED)
-            reward = reward * (GOOD_REWARD * (len(self.snake) - 2))
+            reward = reward * (GOOD_REWARD ** (len(self.snake) - 3))
             self.point = False
 
         # 繪製蛇和食物

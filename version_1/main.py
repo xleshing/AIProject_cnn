@@ -5,7 +5,6 @@ from agent import Agent
 from game import Snake
 from opencv import ColorObjectDetector
 from settings import *
-from sklearn.preprocessing import MinMaxScaler
 import cv2
 
 
@@ -88,7 +87,6 @@ class Game:
         game = Snake(n, m)
         obj = ColorObjectDetector()
         agent = Agent(obj, pars)
-        scaler = MinMaxScaler()
 
         while True:
             # 取用game中移動前的方向
@@ -96,12 +94,6 @@ class Game:
 
             # 獲取移動前的狀態
             state_old = obj.get_state(direction)
-
-            # 使用fit_transform函数进行归一化
-            state_old = scaler.fit_transform(state_old.reshape(1, -1))
-
-            # 扁平化數據
-            state_old = state_old.flatten()
 
             # 從狀態判斷行動
             final_move = agent.get_action(state_old)
@@ -114,12 +106,6 @@ class Game:
 
             # 獲取移動後的狀態
             state_new = obj.get_state(direction)
-
-            # 使用fit_transform函数进行归一化
-            state_new = scaler.fit_transform(state_new.reshape(1, -1))
-
-            # 扁平化數據
-            state_new = state_new.flatten()
 
             # train short memory
             agent.train_short_memory(state_old, final_move, reward, state_new, done)
@@ -159,8 +145,8 @@ class Game:
                 print('Game', agent.n_games, 'Score', score, 'Record:', record)
 
                 # appends game information to txt file at specified path
-                self.save_to_file(f"D:/Users/Lue/Desktop/{pars.get('graph', 'test')}.txt", agent.n_games, score, record)
-        obj.q()
+                self.save_to_file(f"path/{pars.get('graph', 'test')}.txt", agent.n_games, score, record)
+        cv2.destroyAllWindows()
 
 
 
