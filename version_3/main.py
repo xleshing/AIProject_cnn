@@ -136,7 +136,7 @@ class Game:
                 print('Game', agent.n_games, 'Score', score, 'Record:', record)
 
                 # 将游戏信息附加到指定路径的txt文件
-                self.save_to_file(f"path/{pars.get('graph', 'test')}.txt", agent.n_games, score, record)
+                self.save_to_file(f"./{pars.get('graph', 'test')}.txt", agent.n_games, score, record)
 
         cv2.destroyAllWindows()
 
